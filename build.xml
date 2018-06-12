@@ -1,0 +1,31 @@
+<project name="Code Backup Without Folders" default="retrieve" basedir="." xmlns:sf="antlib:com.salesforce">
+    <property file="build.properties"/>
+    <property environment="env"/>
+  
+  <target name="Deploy">
+<echo message = "${Sandbox2.username}" />  
+  <sf:deploy
+            username="${Sandbox2.username}"
+            password="${Sandbox2.password}"
+            serverurl="${sfSandbox.serverurl}"
+            deployRoot="Demopkg"
+            testLevel="RunSpecifiedTests" rollbackOnError="true" >
+	  <runTest>HelloWorldTest</runTest>
+	  </sf:deploy>
+  </target>
+  
+  <target name="retrieve">
+  <echo message = "${Sandbox1.username}" />
+      <sf:retrieve username="${Sandbox1.username}"
+                   password="${Sandbox1.password}"
+                   serverurl="${sfSandbox.serverurl}"
+          retrieveTarget="Demopkg"
+           unpackaged="DemoPkg/package.xml"/>
+    </target>
+	<!-- Git Macro Definitions -->
+	<target name="src-cleanup">
+	<delete dir="DemoPkg" />
+	<mkdir dir="DemoPkg" />
+	</target>
+ </project>
+ 
