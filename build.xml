@@ -20,7 +20,7 @@
                    password="${Sandbox1.password}"
                    serverurl="${sfSandbox.serverurl}"
           retrieveTarget="Demopkg"
-           unpackaged="DemoPkg/package.xml"/>
+           unpackaged="Demopkg/package.xml" />
 	
 	</target>
 	<!-- Git Macro Definitions -->
