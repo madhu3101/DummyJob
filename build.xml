@@ -21,11 +21,67 @@
                    serverurl="${sfSandbox.serverurl}"
           retrieveTarget="Demopkg"
            unpackaged="DemoPkg/package.xml"/>
-    </target>
+	
+	</target>
 	<!-- Git Macro Definitions -->
 	<target name="src-cleanup">
-	<delete dir="DemoPkg" />
+	<delete dir="DemoPkg" />	
 	<mkdir dir="DemoPkg" />
 	</target>
+	
+	<target name="git-perm">
+	<exec executable="git">
+	<arg value="config" />
+	<arg value="--global" />
+	<arg value="core.autocrlf" />
+	<arg value="false" />
+	</exec>
+	</target>
+	
+	<target name="git-add-all">
+	<exec executable="git">
+	<arg value="add" />
+	<arg value="-A" />
+	<arg value="DemoPkg/" />
+	</exec>
+	</target>
+<target name="git-commit">
+	<exec executable="git">
+	<arg value="commit" />
+	<arg value="-m" />
+	<arg value="auto commit" />
+	</exec>
+</target>
+<target name="git-push1">
+	<exec executable="git">
+	<arg value="remote" />
+	<arg value="add" />
+	<arg value="origin" />
+	<arg value="https://github.com/madhu3101/DemoClass" />
+	</exec>
+</target>
+	<target name="git-push">
+	<exec executable="git">
+	<arg value="push" />
+	<arg value="origin" />
+	<arg value="master" />
+	</exec>
+</target>
+	<target name="git-user1">
+	<exec executable="git">
+	<arg value="config" />
+	<arg value="--global" />
+	<arg value="user.name" />
+	<arg value="madhu3101" />
+	</exec>
+</target>
+<target name="git-user2">
+	<exec executable="git">
+	<arg value="config" />
+	<arg value="--global" />
+	<arg value="user.email" />
+	<arg value="madhavylatha03@gmail.com" />
+	</exec>
+</target>
  </project>
  
